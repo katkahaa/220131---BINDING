@@ -23,6 +23,7 @@
             <ComboBoxItem Content="Vysoká škola"></ComboBoxItem>
         </ComboBox>
         <DatePicker Name="DatumNarozeni" HorizontalAlignment="Left" Height="28" Margin="150,79,0,0" Text="{Binding Narozeni, Mode=TwoWay}" VerticalAlignment="Top" Width="160"/>
+        <Button x:Name="btShow" Content="neter" HorizontalAlignment="Left" Height="50" Margin="92,275,0,0" VerticalAlignment="Top" Width="116" Click="BtShow_Click"/>
 
     </Grid>
 </Window>

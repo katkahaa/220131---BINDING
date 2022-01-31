@@ -20,14 +20,22 @@ using System.Windows.Threading;
 
 namespace _220131___BINDING
 {
-    /// <summary>
-    /// Interakční logika pro MainWindow.xaml
-    /// </summary>
+    /// KONTROLA!!! ZÁPIS DO SOUBORU!!!!!!!
     public partial class MainWindow : Window
     {
+        Zamestnanec z;
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = z = new Zamestnanec() { Narozeni = DateTime.Now };
+        }
+        private void BtShow_Click(object sender, RoutedEventArgs e)
+        {
+            BindingExpression expr = Prijmeni.GetBindingExpression(TextBox.TextProperty);
+            expr?.UpdateSource();
+
+            MessageBox.Show(z.ToString() + "\n" +
+                expr.ResolvedSourcePropertyName + ": vynucená akutalizace");
         }
     }
 
