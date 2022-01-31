@@ -1,0 +1,24 @@
+﻿<Window x:Class="_220131___BINDING.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_220131___BINDING"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="327.929">
+    <Grid>
+        <Label Content="Jméno" HorizontalAlignment="Left" Height="33" Margin="10,10,0,0" VerticalAlignment="Top" Width="116"/>
+        <Label Content="Příjmení" HorizontalAlignment="Left" Height="33" Margin="10,43,0,0" VerticalAlignment="Top" Width="116"/>
+        <Label Content="Datum narození" HorizontalAlignment="Left" Height="33" Margin="10,76,0,0" VerticalAlignment="Top" Width="116"/>
+        <Label Content="Nejvyšší vzdělání" HorizontalAlignment="Left" Height="33" Margin="10,109,0,0" VerticalAlignment="Top" Width="116"/>
+        <Label Content="Hrubý plat" HorizontalAlignment="Left" Height="33" Margin="10,147,0,0" VerticalAlignment="Top" Width="116"/>
+        <Label Content="Pracovní pozice" HorizontalAlignment="Left" Height="33" Margin="10,185,0,0" VerticalAlignment="Top" Width="116"/>
+        <TextBox x:Name="Jmeno" HorizontalAlignment="Left" Height="28" Margin="150,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="Prijmeni" HorizontalAlignment="Left" Height="28" Margin="150,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="PracovniPozice" HorizontalAlignment="Left" Height="28" Margin="150,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="HrubyPlat" HorizontalAlignment="Left" Height="28" Margin="150,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
+        <ComboBox x:Name="NejvyssiVzdelani" HorizontalAlignment="Left" Height="28" Margin="150,114,0,0" VerticalAlignment="Top" Width="160"/>
+        <DatePicker Name="DatumNarozeni" HorizontalAlignment="Left" Height="28" Margin="150,79,0,0" VerticalAlignment="Top" Width="160"/>
+
+    </Grid>
+</Window>
