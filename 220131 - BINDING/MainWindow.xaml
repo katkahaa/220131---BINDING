@@ -13,12 +13,16 @@
         <Label Content="Nejvyšší vzdělání" HorizontalAlignment="Left" Height="33" Margin="10,109,0,0" VerticalAlignment="Top" Width="116"/>
         <Label Content="Hrubý plat" HorizontalAlignment="Left" Height="33" Margin="10,147,0,0" VerticalAlignment="Top" Width="116"/>
         <Label Content="Pracovní pozice" HorizontalAlignment="Left" Height="33" Margin="10,185,0,0" VerticalAlignment="Top" Width="116"/>
-        <TextBox x:Name="Jmeno" HorizontalAlignment="Left" Height="28" Margin="150,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
-        <TextBox x:Name="Prijmeni" HorizontalAlignment="Left" Height="28" Margin="150,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
-        <TextBox x:Name="PracovniPozice" HorizontalAlignment="Left" Height="28" Margin="150,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
-        <TextBox x:Name="HrubyPlat" HorizontalAlignment="Left" Height="28" Margin="150,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
-        <ComboBox x:Name="NejvyssiVzdelani" HorizontalAlignment="Left" Height="28" Margin="150,114,0,0" VerticalAlignment="Top" Width="160"/>
-        <DatePicker Name="DatumNarozeni" HorizontalAlignment="Left" Height="28" Margin="150,79,0,0" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="Jmeno" HorizontalAlignment="Left" Height="28" Margin="150,14,0,0" TextWrapping="Wrap" Text="{Binding Jmeno, Mode=TwoWay,UpdateSourceTrigger=LostFocus}" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="Prijmeni" HorizontalAlignment="Left" Height="28" Margin="150,48,0,0" TextWrapping="Wrap" Text="{Binding Prijmeni, Mode=TwoWay,UpdateSourceTrigger=LostFocus}" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="PracovniPozice" HorizontalAlignment="Left" Height="28" Margin="150,187,0,0" TextWrapping="Wrap" Text="{Binding PracovniPozice, Mode=TwoWay,UpdateSourceTrigger=LostFocus}" VerticalAlignment="Top" Width="160"/>
+        <TextBox x:Name="HrubyPlat" HorizontalAlignment="Left" Height="28" Margin="150,151,0,0" TextWrapping="Wrap" Text="{Binding HrubyPlat, Mode=TwoWay,UpdateSourceTrigger=LostFocus}" VerticalAlignment="Top" Width="160"/>
+        <ComboBox x:Name="NejvyssiVzdelani" HorizontalAlignment="Left" Height="28" Margin="150,114,0,0"  Text="{Binding NejvyssiVzdelani, Mode=TwoWay}" VerticalAlignment="Top" Width="160">
+            <ComboBoxItem Content="Základní škola"></ComboBoxItem>
+            <ComboBoxItem Content="Střední škola"></ComboBoxItem>
+            <ComboBoxItem Content="Vysoká škola"></ComboBoxItem>
+        </ComboBox>
+        <DatePicker Name="DatumNarozeni" HorizontalAlignment="Left" Height="28" Margin="150,79,0,0" Text="{Binding Narozeni, Mode=TwoWay}" VerticalAlignment="Top" Width="160"/>
 
     </Grid>
 </Window>
