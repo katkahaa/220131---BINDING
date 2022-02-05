@@ -17,10 +17,10 @@ using System.Globalization;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Threading;
+using System.Text.RegularExpressions; 
 
 namespace _220131___BINDING
-{
-    /// KONTROLA!!! ZÁPIS DO SOUBORU!!!!!!!
+{ // ZÁPIS DO SOUBORU!!!!!!!
     public partial class MainWindow : Window
     {
         Zamestnanec z;
@@ -31,11 +31,15 @@ namespace _220131___BINDING
         }
         private void BtShow_Click(object sender, RoutedEventArgs e)
         {
-            BindingExpression expr = Prijmeni.GetBindingExpression(TextBox.TextProperty);
-            expr?.UpdateSource();
+            if (Prijmeni.Text != "" && Jmeno.Text != "" && HrubaMzda.Text != "" && NejvyssiVzdelani.SelectedItem != null && PracovniPozice.Text != "")
+            {
+                BindingExpression expr = Prijmeni.GetBindingExpression(TextBox.TextProperty);
+                expr?.UpdateSource();
 
-            MessageBox.Show(z.ToString() + "\n" +
-                expr.ResolvedSourcePropertyName + ": vynucená akutalizace");
+                MessageBox.Show("Uloženo:\n" + z.ToString());
+            }
+            else
+                MessageBox.Show("Zadejte všechny údaje!!!");
         }
     }
 
@@ -57,7 +61,10 @@ namespace _220131___BINDING
             get => _Jmeno;
             set
             {
-                _Jmeno = value;
+                if (Regex.IsMatch(value, @"^([A-Z, {ŠČŘŽÁÍÉĎŤŇÓ}]\S+ *)+$") && value != null)
+                    _Jmeno = value;
+                else
+                    MessageBox.Show("Neplatný vstup pro jméno!!!");
                 OnPropertyChanged("Jmeno");
                 OnPropertyChanged("Status");
             }
@@ -67,7 +74,11 @@ namespace _220131___BINDING
             get => _Prijmeni;
             set
             {
-                _Prijmeni = value;
+
+                if (Regex.IsMatch(value, @"^([A-Z, {ŠČŘŽÁÍÉĎŤŇÓ}]\S+ *)+$") && value != null)
+                    _Prijmeni = value;
+                else
+                    MessageBox.Show("Neplatný vstup pro jméno!!!");
                 OnPropertyChanged("Prijmeni");
                 OnPropertyChanged("Status");
             }
@@ -90,7 +101,7 @@ namespace _220131___BINDING
 
         public override string ToString()
         {
-            return Jmeno + " " + Prijmeni + " " + Narozeni.ToShortDateString();
+            return $"Jméno: {Jmeno}\nPříjmení: {Prijmeni}\nDatum Narození: {Narozeni.ToShortDateString()}\n";
         }
         // pomocná metoda pro informaci o změně v datech
         protected void OnPropertyChanged(string property)
@@ -101,14 +112,14 @@ namespace _220131___BINDING
     }
     class Zamestnanec :Person, INotifyPropertyChanged
     {
-        private int _HrubaMzda;
+        private string _HrubaMzda;
         private string _PracovniPozice, _Vzdelani;
         public string PracovniPozice
         {
             get => _PracovniPozice;
             set
             {
-                _PracovniPozice = value;
+                _PracovniPozice = value.ToString();
                 OnPropertyChanged("PracovniPozice");
                 OnPropertyChanged("Status");
             }
@@ -123,15 +134,22 @@ namespace _220131___BINDING
                 OnPropertyChanged("Status");
             }
         }
-        public int HrubaMzda
+        public string HrubaMzda
         {
             get => _HrubaMzda;
             set
             {
-                _HrubaMzda = value;
+                if (Regex.IsMatch(value, @"^(\d *)+$"))
+                    _HrubaMzda = value;
+                else
+                    MessageBox.Show("Neplatný vstup pro hrubou mzdu!!!");
                 OnPropertyChanged("HrubaMzda");
                 OnPropertyChanged("Status");
             }
+        }
+        public override string ToString()
+        {
+            return base.ToString() + $"Nejvyšší vzdělání: {Vzdelani}\nHrubá mzda: {HrubaMzda}\nPracovní pozice: {PracovniPozice}";
         }
     }
 
