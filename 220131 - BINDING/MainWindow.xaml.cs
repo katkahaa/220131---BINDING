@@ -33,12 +33,15 @@ namespace _220131___BINDING
         {
             if (Prijmeni.Text != "" && Jmeno.Text != "" && HrubaMzda.Text != "" && NejvyssiVzdelani.SelectedItem != null && PracovniPozice.Text != "")
             {
+
                 BindingExpression expr = Prijmeni.GetBindingExpression(TextBox.TextProperty);
                 expr?.UpdateSource();
-
+                using (StreamWriter sw = File.AppendText("zamestnanci.txt"))
+                {
+                    sw.WriteLine(z.ToString());
+                    sw.WriteLine();
+                }
                 MessageBox.Show("Uloženo:\n" + z.ToString());
-                StreamWriter sw = new StreamWriter("zamestnanci.txt");
-                sw.WriteLine(z.ToString());
             }
             else
                 MessageBox.Show("Zadejte všechny údaje!!!");
