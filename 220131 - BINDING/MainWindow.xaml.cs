@@ -17,7 +17,7 @@ using System.Globalization;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows.Threading;
-using System.Text.RegularExpressions; 
+using System.Text.RegularExpressions;
 
 namespace _220131___BINDING
 { // ZÁPIS DO SOUBORU!!!!!!!
@@ -37,6 +37,8 @@ namespace _220131___BINDING
                 expr?.UpdateSource();
 
                 MessageBox.Show("Uloženo:\n" + z.ToString());
+                StreamWriter sw = new StreamWriter("zamestnanci.txt");
+                sw.WriteLine(z.ToString());
             }
             else
                 MessageBox.Show("Zadejte všechny údaje!!!");
@@ -110,7 +112,7 @@ namespace _220131___BINDING
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
         }
     }
-    class Zamestnanec :Person, INotifyPropertyChanged
+    class Zamestnanec : Person, INotifyPropertyChanged
     {
         private string _HrubaMzda;
         private string _PracovniPozice, _Vzdelani;
